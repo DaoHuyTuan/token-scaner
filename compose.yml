@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  node_db:
+    container_name: node_db
+    image: postgres:12
+    ports:
+      - "6789:5432"
+    environment:
+      - POSTGRES_DB=node_pg_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123123
+    volumes:
+      - node_db_data:/var/lib/postgresql/data
+    networks:
+      - bet-test-net
+
+volumes:
+  node_db_data: {}
+
+networks:
+  bet-test-net:
+    name: bet-test-net
